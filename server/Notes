@@ -1,0 +1,19 @@
+
+
+
+
+
+#TOMTOM_API_KEY=sUxYqP5zWT9qwMsCwYqzavTiamADs4MZ
+
+#Tomtom lat long not found;
+
+ what we can do is run google search api and get the links from there 
+ and then scrape the reviews from there 
+ 
+ Add llm to identuify which reviews are topic related or not 
+ 
+ 
+ Refetch reviews of a place afetr certaint time
+ 
+ 
+ 

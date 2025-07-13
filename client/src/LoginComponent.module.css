@@ -1,0 +1,148 @@
+.container {
+    min-height: 100vh;
+    background: #faf9fb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  
+  .card {
+    background: #fff;
+    border-radius: 24px;
+    box-shadow: 0 4px 32px rgba(80, 80, 120, 0.08);
+    padding: 32px 24px 24px 24px;
+    width: 100%;
+    max-width: 360px;
+    position: relative;
+  }
+  
+  .backBtn {
+    position: absolute;
+    left: 16px;
+    top: 16px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #bbb;
+    font-size: 22px;
+  }
+  
+  .title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 28px;
+    margin-top: 8px;
+    color: #222;
+  }
+  
+  .formGroup {
+    margin-bottom: 18px;
+  }
+  
+  .label {
+    display: block;
+    font-size: 1rem;
+    color: #444;
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  
+  .inputWrap {
+    position: relative;
+  }
+  
+  .input {
+    width: 50%;
+    padding: 14px 44px 14px 16px;
+    border-radius: 14px;
+    border: 1px solid #e5e5e5;
+    background: #faf9fb;
+    font-size: 1rem;
+    outline: none;
+    margin-bottom: 0;
+  }
+  
+  .eyeBtn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #bbb;
+    font-size: 18px;
+  }
+  
+  .submitBtn {
+    width: 100%;
+    padding: 14px 0;
+    border-radius: 14px;
+    background: #f3e8ff;
+    color: #7c3aed;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border: none;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  .submitBtn:hover {
+    background: #e9d5ff;
+  }
+  
+  .divider {
+    display: flex;
+    align-items: center;
+    margin: 24px 0 18px 0;
+  }
+  
+  .dividerLine {
+    flex: 1;
+    height: 1px;
+    background: #eee;
+  }
+  
+  .dividerText {
+    margin: 0 12px;
+    color: #aaa;
+    font-size: 0.95rem;
+  }
+  
+  .googleBtn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 13px 0;
+    border-radius: 999px;
+    border: 1px solid #e5e5e5;
+    background: #fff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px #f3e8ff;
+    margin-bottom: 10px;
+  }
+  
+  .switchText {
+    text-align: center;
+    font-size: 0.98rem;
+    color: #888;
+    margin-top: 18px;
+  }
+  
+  .switchBtn {
+    color: #7c3aed;
+    background: none;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: 4px;
+    text-decoration: underline;
+  }

@@ -1,0 +1,89 @@
+1. User query:
+   city = "Delhi"
+   category = "cafe"
+   vibe = "aesthetic"
+
+2. Check MongoDB:
+   Find matching location documents with:
+   - city = delhi
+   - category = cafe
+   - vibe_tags includes "aesthetic"
+
+3. If ≥ 5 matches → Return those 🎯
+Option if user not interested load more option to carry out the following 
+
+4. Else →
+   - 🔍 Tom Tom API: fetch places in "Delhi" with category = "cafe"
+   - 💬 For each place:
+        - Use name/keywords to do Reddit search (e.g., "Cafe 26 Delhi review site:reddit.com")
+        - Scrape 3–5 top comments or post bodies
+   - 🧠 Pass raw_reviews to LLM
+   - 🎨 Get summarized_vibe, tags, citations, emojis
+   - 💾 Save enriched location in DB
+   - ✅ Return to user
+
+
+/*  
+🔍 FULL FLOW: Place Discovery & Search (LLM + RAG-Enhanced)
+
+User Input (Natural Language)
+    ↓
+🧠 LLM Classifier (via LangChain)
+    → Classifies intent from user query
+    → Output: Either "place_search" or "place_detail"
+
+┌──────────────────────────────┬────────────────────────────────────┐
+│ Intent: "place_search"       │ Intent: "place_detail"            │
+│                              │                                    │
+│ ➤ Convert to structured JSON │ ➤ Use place name to search Mongo  │
+│   query (city, category,     │   for one specific place           │
+│   vibe_tags, etc.)           │                                    │
+│                              │ ➤ LLM generates a summary          │
+│ ➤ Enters Search Flow         │   response using DB + memory       │
+└──────────────────────────────┴────────────────────────────────────┘
+
+=====================
+🔁 SEARCH FLOW (if "place_search")
+=====================
+
+[1] 📥 Accept user query (structured JSON)
+      → { city, category, vibe_tags }
+
+[2] 🧠 Store query in:
+      a) Memory (LangChain)
+      b) MongoDB user profile (for personalization)
+
+[3] 🔎 Search MongoDB for places matching:
+      → city, category, vibe_tags
+      → If ≥ 5 results → return them directly
+
+[4] 🚨 If < 5 results:
+    → Fallback: Call TomTom API for more places in that city/category
+
+[5] 🕵️ Scrape Reddit for each new TomTom place:
+      → Query: "<place name> <city> review site:reddit.com"
+      → Fetch 3–5 relevant posts/comments
+
+[6] 🧠 LLM Post-Processing:
+    → For each place, summarize reviews
+    → Extract vibe tags (e.g., “aesthetic”, “cozy”)
+    → Suggest 2–3 emojis to represent the place
+
+[7] 💾 Store in MongoDB:
+    → original: { name, category, coordinates, etc. }
+    → processed: { summary, vibe_tags, emojis }
+    → reviews: [ { source: "reddit", content: "..." } ]
+
+[8] 🔁 Re-run MongoDB search with original filter
+      → Use updated dataset
+      → Return 5 enriched, matching places
+
+=====================
+🧠 Memory Update (Optional)
+=====================
+→ Log user preferences
+→ Update profile with:
+    - Top vibes searched
+    - Places interacted with
+*/
+
